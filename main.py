@@ -119,23 +119,34 @@ def extract_list_field(v, key):
 
 
 def format_paper(v):
-    list_keys = ["authors", "keywords", "session"]
+    list_keys = ["authors", "affiliations", "keywords", "session"]
     list_fields = {}
     for key in list_keys:
         list_fields[key] = extract_list_field(v, key)
 
     return {
         "id": v["UID"],
+        "sequence": v["sequence"],
         "forum": v["UID"],
         "content": {
             "title": v["title"],
+            "track": v["track"],
             "authors": list_fields["authors"],
+            "affiliations": list_fields["affiliations"],
             "keywords": list_fields["keywords"],
             "abstract": v["abstract"],
             "TLDR": v["abstract"],
             "recs": [],
             "session": list_fields["session"],
             "pdf_url": v.get("pdf_url", ""),
+            "doi": v.get("doi", ""),
+            "broadcast": v.get("broadcast", ""),
+            "qa": v.get("qa", ""),
+            "gallery_picture": v.get("gallery_picture", ""),
+            "short_talk": v.get("short_talk", ""),
+            "lab_website": v.get("lab_website", ""),
+            "project_website": v.get("project_website", ""),
+            "source_code": v.get("source_code", ""),
         },
     }
 
