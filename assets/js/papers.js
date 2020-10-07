@@ -33,7 +33,7 @@ const updateCards = (papers) => {
       .selectAll('.myCard', openreview => openreview.id)
       .data(papers, d => d.number)
       .join('div')
-      .attr('class', 'myCard col-xs-6 col-md-4')
+      .attr('class', 'myCard col-xs-6 col-md-6')
       .html(card_html)
 
     all_mounted_cards.select('.card-title')
