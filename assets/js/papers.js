@@ -258,10 +258,13 @@ const card_html = openreview => `
         <div class="pp-card pp-mode-` + render_mode + ` ">
             <div class="pp-card-header">
             <div class="checkbox-paper ${openreview.content.read ? 'selected' : ''}" style="display: block;position: absolute; top:3px;right: 35px;">٭</div>
-                <a href="poster_${openreview.id}.html"
-                target="_blank"
-                   class="text-muted">
-                   <h5 class="card-title" align="center"> ${openreview.content.title} </h5></a>
+                <span class="card-title text-muted">
+                    <h5>${openreview.content.track.toUpperCase()} #${openreview.sequence}:</h5>
+                </span>
+                <br/>
+                <a href="poster_${openreview.id}.html" target="_blank" class="text-muted">
+                   <h5 class="card-title" align="center"> ${openreview.content.title} </h5>
+                </a>
                 <h6 class="card-subtitle text-muted" align="center">
                         ${openreview.content.authors.join(', ')}
                 </h6>
