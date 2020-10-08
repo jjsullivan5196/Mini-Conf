@@ -1,10 +1,9 @@
 {% set active_page = "Papers" %}
-{% set page_title = "Papers" %}
+{% set page_title = "Program Gallery" %}
 
 {% extends "base.html" %}
 {% block head %}
 {{ super() }}
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy-bundle.umd.min.js"></script>
 
 <script src="assets/js/icons.js"></script>
@@ -151,17 +150,3 @@
 
 {% endblock %}
 
-{% block footer %}
-
-<div
-  class="gdpr bg-dark text-light"
-  style="padding: 10pt; position: fixed; bottom: 0; display: none;"
->
-  We use cookies to store which papers have been visited.
-  <div class="gdpr-btn btn btn-sm btn-info" style="margin-left: 15pt;">
-    I agree
-  </div>
-</div>
-<script src="assets/js/gdpr_cookies.js"></script>
-
-{% endblock %}
