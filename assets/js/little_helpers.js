@@ -12,6 +12,46 @@ function setQueryStringParameter(name, value) {
     window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${params}`));
 }
 
+function videoOverlay(id) {
+    const thumb = `https://img.youtube.com/vi/${id}/mqdefault.jpg`
+    const template = document.createElement('template');
+    template.innerHTML = `
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body embed-responsive embed-responsive-16by9">
+            <iframe
+              class="embed-responsive-item"
+              src="https://www.youtube.com/embed/${id}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    `
+
+    return {
+        thumb,
+        open() {
+            const frag = template.content.cloneNode(true).firstElementChild;
+
+            $(frag).on('hidden.bs.modal', function() {
+                $(frag).modal('dispose');
+                $(frag).remove();
+            });
+
+            document.body.appendChild(frag);
+            $(frag).modal('show');
+        }
+    }
+}
 
 const initTypeAhead = (list, css_sel, name, callback) => {
     const bh = new Bloodhound({

@@ -56,6 +56,33 @@ const updateCards = (papers) => {
       })
 
 
+    all_mounted_cards.select('.cards-img-container').each(function(d) {
+        if(d.content.short_talk) {
+            const overlay = videoOverlay(d.content.short_talk.split('?v=').pop());
+
+            d3.select(this)
+                .append('img')
+                .classed("lazy-load-img cards_img", true)
+                .attr('data-src', overlay.thumb)
+                .on('click', overlay.open);
+        }
+        if(d.content.long_talk) {
+            const overlay = videoOverlay(d.content.long_talk.split('?v=').pop());
+
+            d3.select(this)
+                .append('img')
+                .classed("lazy-load-img cards_img", true)
+                .attr('data-src', overlay.thumb)
+                .on('click', overlay.open);
+        }
+        if(!d.content.short_talk && !d.content.long_talk) {
+            d3.select(this)
+                .append('img')
+                .classed("lazy-load-img cards_img", true)
+                .attr('data-src', d.content.gallery_picture);
+        }
+    })
+
     lazyLoader();
 }
 
@@ -282,7 +309,7 @@ const card_html = openreview => `
                         ${openreview.content.authors.join(', ')}<br/>
                         ${openreview.content.affiliations.join(', ')}
                 </h6>
-                ${card_image(openreview, render_mode !== 'list')}
+                ${render_mode !== 'list' ? '<div class="cards-img-container"></div>' : ''}
                 ${card_links(openreview)}
                 
             </div>
