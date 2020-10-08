@@ -1,6 +1,6 @@
 PYTHON_FILES = main.py scripts/ chat/
-JS_FILES = $(shell find static/js -name "*.js")
-CSS_FILES = $(shell find static/css -name "*.css")
+JS_FILES = $(shell find assets/js -name "*.js")
+CSS_FILES = $(shell find assets/css -name "*.css")
 .PHONY: format-python format-web format run freeze format-check
 TEMP_DEPLOY_BRANCH = "temp-gh-pages"
 
@@ -21,6 +21,7 @@ run:
 
 freeze:
 	python3 main.py sitedata/ --build
+	cp -r assets build/
 
 # check code format
 format-check:

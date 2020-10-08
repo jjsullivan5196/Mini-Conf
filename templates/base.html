@@ -11,9 +11,9 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <link rel="stylesheet" href="static/css/main.css" />
-    <link rel="stylesheet" href="static/css/lazy_load.css" />
-    <link rel="stylesheet" href="static/css/typeahead.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/lazy_load.css" />
+    <link rel="stylesheet" href="assets/css/typeahead.css" />
 
     <!-- External Javascript libs  -->
     <script src="https://cdn.jsdelivr.net/npm/d3@5/dist/d3.min.js"></script>
@@ -37,7 +37,7 @@
 
 
     <!-- Library libs -->
-    <script src="static/js/typeahead.bundle.js"></script>
+    <script src="assets/js/typeahead.bundle.js"></script>
 
     {% if config.use_auth0 %}
     <script>
@@ -45,7 +45,7 @@
       var auth0_client_id = "{{config.auth0_client_id}}";
     </script>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.7/auth0-spa-js.production.js"></script>
-    <script src="static/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
     {% endif %}
 
     <!-- External CSS -->
@@ -53,12 +53,12 @@
 
     <!-- External Fonts (no google for china) -->
     <link
-      href="static/css/Lato.css"
+      href="assets/css/Lato.css"
       rel="stylesheet"
     />
-    <link href="static/css/Exo.css" rel="stylesheet" />
+    <link href="assets/css/Exo.css" rel="stylesheet" />
     <link
-      href="static/css/Cuprum.css"
+      href="assets/css/Cuprum.css"
       rel="stylesheet"
     />
 
@@ -176,7 +176,7 @@
         });
       });
     </script>
-    <script src="static/js/lazy_load.js"></script>
+    <script src="assets/js/lazy_load.js"></script>
     {% endblock %}
   </body>
 </html>
