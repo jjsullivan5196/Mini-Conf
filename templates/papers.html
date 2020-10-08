@@ -13,22 +13,12 @@
 {% endblock %}
 
 {% block tabs %}
-<ul class="nav nav-pills justify-content-center">
-  <li class="nav-item active">
-    <a
-      class="nav-link text-muted active"
-      data-toggle="tab"
-      href="#tab-browse"
-      role="tab"
-      aria-controls="nav-home"
-      aria-selected="true"
-      >Browse
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-muted" href="paper_vis.html">Visualization</a>
-  </li>
-</ul>
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-6 col-md-6 col-lg-4 text-center">
+    <div class="btn-group btn-group-toggle select_tracks">
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 

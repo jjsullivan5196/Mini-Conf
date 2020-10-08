@@ -13,6 +13,7 @@ const filters = {
 };
 
 let render_mode = 'compact';
+let cards_shown = new Set();
 
 const persistor = new Persistor('Mini-Conf-Papers');
 
@@ -33,7 +34,8 @@ const updateCards = (papers) => {
       .selectAll('.myCard', openreview => openreview.id)
       .data(papers, d => d.number)
       .join('div')
-      .attr('class', 'myCard col-xs-6 col-md-6')
+      .attr('class', d => `myCard track_${d.content.track} col-xs-6 col-md-6`)
+      .classed('d-none', d => !cards_shown.has(d.content.track))
       .html(card_html)
 
     all_mounted_cards.select('.card-title')
@@ -151,6 +153,26 @@ const updateSession = () => {
     }
 }
 
+function trackSelect(card_tracks) {
+    const buttons = d3.select('.select_tracks');
+    card_tracks.forEach(track => {
+        buttons.insert('button')
+            .text(track)
+            .classed('btn btn-outline-secondary active', true)
+            .attr('data-tippy-content', `Toggle ${track} track in gallery`)
+            .on('click', function() {
+                const selected = !cards_shown.delete(track);
+
+                if(selected) {
+                    cards_shown.add(track);
+                }
+
+                d3.select(this).classed('active', selected);
+                d3.selectAll(`.track_${track}`).classed('d-none', !selected);
+            })
+    })
+}
+
 /**
  * START here and load JSON.
  */
@@ -163,6 +185,8 @@ const start = (layout) => {
     d3.json('papers.json').then(papers => {
         console.log(papers, "--- papers");
 
+        papers.forEach(p => cards_shown.add(p.content.track));
+        trackSelect(cards_shown);
         layout();
 
         shuffleArray(papers);
@@ -315,7 +339,7 @@ const card_html = openreview => `
                 </a>
                 <h6 class="card-subtitle text-muted" align="center">
                         ${openreview.content.authors.join(', ')}<br/>
-                        ${openreview.content.affiliations.join(', ')}
+                        ${openreview.content.affiliations.join(' | ')}
                 </h6>
                 ${render_mode !== 'list' ? '<div class="cards-img-container"></div>' : ''}
                 ${card_links(openreview)}
