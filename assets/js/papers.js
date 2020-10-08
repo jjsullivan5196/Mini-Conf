@@ -220,6 +220,19 @@ const card_detail = (openreview, show) => {
     else return ''
 }
 
+const card_links = ({ content }) => {
+    let links = [];
+
+    content.project_website && links.push(`<a href="${content.project_website}">Project Website</a>`);
+    content.lab_website && links.push(`<a href="${content.lab_website}">Lab Website</a>`);
+    content.source_code && links.push(`<a href="${content.source_code}">Source Code</a>`);
+
+    return links.length > 0 ? `
+    <h6 class="card-subtitle card-links text-muted">
+        ${links.join(' | ')}
+    </h6>` : '';
+}
+
 const card_time_small = (openreview, show) => {
     const cnt = openreview.content;
     return show ? `
@@ -269,6 +282,7 @@ const card_html = openreview => `
                         ${openreview.content.authors.join(', ')}
                 </h6>
                 ${card_image(openreview, render_mode !== 'list')}
+                ${card_links(openreview)}
                 
             </div>
                
