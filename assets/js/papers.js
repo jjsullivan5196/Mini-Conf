@@ -260,6 +260,15 @@ const card_links = ({ content }) => {
     </h6>` : '';
 }
 
+const card_attend = ({ content }) => {
+    let links = [];
+
+    content.broadcast && links.push(`<a class="btn btn-sm btn-primary rounded-0" role="button" href="${content.broadcast}">Attend Live</a>`);
+    content.qa && links.push(`<a class="btn btn-sm btn-secondary rounded-0" role="button" href="${content.qa}">Q&amp;A</a>`);
+
+    return links.length > 0 ? links.join('') : '';
+}
+
 const card_time_small = (openreview, show) => {
     const cnt = openreview.content;
     return show ? `
@@ -299,9 +308,8 @@ const card_html = openreview => `
             <div class="pp-card-header">
             <div class="checkbox-paper ${openreview.content.read ? 'selected' : ''}" style="display: block;position: absolute; top:3px;right: 35px;">٭</div>
                 <span class="card-title text-muted">
-                    <h5>${openreview.content.track.toUpperCase()} #${openreview.sequence}:</h5>
+                    <h5>${openreview.content.track.toUpperCase()} #${openreview.sequence}: ${card_attend(openreview)}</h5>
                 </span>
-                <br/>
                 <a href="poster_${openreview.id}.html" target="_blank" class="text-muted">
                    <h5 class="card-title" align="center"> ${openreview.content.title} </h5>
                 </a>
