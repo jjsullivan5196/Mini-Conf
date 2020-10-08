@@ -334,9 +334,9 @@ const card_html = openreview => `
                 <span class="card-title text-muted">
                     <h5>${openreview.content.track.toUpperCase()} #${openreview.sequence}: ${card_attend(openreview)}</h5>
                 </span>
-                <a href="poster_${openreview.id}.html" target="_blank" class="text-muted">
+                <span target="_blank" class="text-muted">
                    <h5 class="card-title" align="center"> ${openreview.content.title} </h5>
-                </a>
+                </span>
                 <h6 class="card-subtitle text-muted" align="center">
                         ${openreview.content.authors.join(', ')}<br/>
                         ${openreview.content.affiliations.join(' | ')}
