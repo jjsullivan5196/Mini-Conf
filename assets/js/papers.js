@@ -279,7 +279,8 @@ const card_html = openreview => `
                    <h5 class="card-title" align="center"> ${openreview.content.title} </h5>
                 </a>
                 <h6 class="card-subtitle text-muted" align="center">
-                        ${openreview.content.authors.join(', ')}
+                        ${openreview.content.authors.join(', ')}<br/>
+                        ${openreview.content.affiliations.join(', ')}
                 </h6>
                 ${card_image(openreview, render_mode !== 'list')}
                 ${card_links(openreview)}
