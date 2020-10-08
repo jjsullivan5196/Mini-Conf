@@ -65,6 +65,10 @@ body {
   padding-right: 15px;
 }
 
+.pp-card-detail {
+  overflow: scroll;
+}
+
 .pp-mode-list .pp-card-header {
   height: 175px;
   border: 1px solid #eee;
@@ -271,14 +275,14 @@ body .carousel-control-prev {
 .checkbox-paper {
   opacity: 0.2;
   color: gray;
-  font-size: 18pt;
+  font-size: 32pt;
   font-weight: bold;
   cursor: pointer;
 }
 
 .checkbox-paper.selected {
   opacity: 1;
-  color: green;
+  color: gold;
 }
 
 @supports (-webkit-text-stroke: 1px gray) {
@@ -290,6 +294,6 @@ body .carousel-control-prev {
 
   .checkbox-paper.selected {
     opacity: 1;
-    -webkit-text-fill-color: green;
+    -webkit-text-fill-color: gold;
   }
 }

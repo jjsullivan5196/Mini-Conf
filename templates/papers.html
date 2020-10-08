@@ -92,7 +92,7 @@
         title
       </label>
       <label
-        class="btn btn-outline-secondary"
+        class="btn btn-outline-secondary d-none"
         data-tippy-content="Search for papers with specific keywords"
       >
         <input
@@ -155,8 +155,7 @@
 <script src="assets/js/papers.js"></script>
 <script>
   $(document).ready(function () {
-    tippy("[data-tippy-content]", { trigger: "mouseenter focus" });
-    start();
+    start(() => tippy("[data-tippy-content]", { trigger: "mouseenter focus" }));
   });
 </script>
 
