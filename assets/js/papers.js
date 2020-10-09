@@ -233,8 +233,8 @@ d3.selectAll('.remove_session').on('click', () => {
 
 })
 
-d3.selectAll('.render_option input').on('click', function () {
-    const me = d3.select(this);
+d3.selectAll('.render_option .btn').on('click', function () {
+    const me = d3.select(this).select('input');
     render_mode = me.property('value');
 
     render();
