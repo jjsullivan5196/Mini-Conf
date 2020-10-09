@@ -5,6 +5,13 @@ function getUrlParameter(name) {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
+function basename() {
+    return window.location.pathname
+        .split(/[/.]/)
+        .slice(-2, -1)
+        .pop();
+}
+
 function setQueryStringParameter(name, value) {
     // console.log("name", name, "value", value);
     const params = new URLSearchParams(window.location.search);

@@ -178,11 +178,12 @@ function trackSelect(card_tracks) {
  */
 const start = (layout) => {
     const urlFilter = getUrlParameter("filter") || 'titles';
+    const papersUrl = `${basename()}.json`;
     setQueryStringParameter("filter", urlFilter);
     updateFilterSelectionBtn(urlFilter)
 
 
-    d3.json('papers.json').then(papers => {
+    d3.json(papersUrl).then(papers => {
         console.log(papers, "--- papers");
 
         papers.forEach(p => cards_shown.add(p.content.track));
