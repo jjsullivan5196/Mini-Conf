@@ -1,3 +1,7 @@
+.tt-hint {
+  display: none;
+}
+
 .pp-card {
   box-shadow: 0 0 14px 0 rgba(204, 204, 204, 1);
   margin-bottom: 1em;
